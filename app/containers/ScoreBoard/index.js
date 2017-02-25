@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectScoreBoard from './selectors';
 import CardContainer from '../../components/CardContainer';
+import ProfilePictureIcon from '../../components/ProfilePictureIcon'
 import messages from './messages';
 
 export class ScoreBoard extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -23,7 +24,8 @@ export class ScoreBoard extends React.Component { // eslint-disable-line react/p
             { name: 'description', content: 'Description of ScoreBoard' },
           ]}
         />
-        <FormattedMessage {...messages.header} />     
+        <ProfilePictureIcon />
+        <FormattedMessage {...messages.header} />
       </CardContainer>
     );
   }
