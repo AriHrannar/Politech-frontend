@@ -9,16 +9,16 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import CardContainer from 'components/CardContainer';
+import ProfilePictureIcon from 'components/ProfilePictureIcon';
+import ProgressBar from 'components/ProgressBar';
 import makeSelectScoreBoard from './selectors';
-import CardContainer from '../../components/CardContainer';
-import ProfilePictureIcon from '../../components/ProfilePictureIcon';
-import ProgressBar from '../../components/ProgressBar';
 import messages from './messages';
 
 export class ScoreBoard extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    const politicians = this.props.ScoreBoard.politicians;
+    const politicians = this.props.ScoreBoard;
     return (
       <CardContainer>
         <Helmet

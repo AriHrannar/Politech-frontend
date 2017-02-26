@@ -9,8 +9,8 @@ import {
   DEFAULT_ACTION,
 } from './constants';
 
-const initialState = fromJS({
-  politicians: [
+const initialState = fromJS(
+  [
     {
       id: 43,
       name: 'Nafn McNafn',
@@ -22,8 +22,8 @@ const initialState = fromJS({
       party: 'best party',
       score: '34',
     },
-  ],
-});
+  ]
+);
 
 function scoreBoardReducer(state = initialState, action) {
   switch (action.type) {
