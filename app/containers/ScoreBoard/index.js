@@ -16,7 +16,9 @@ import ProgressBar from '../../components/ProgressBar';
 import messages from './messages';
 
 export class ScoreBoard extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
   render() {
+    const politicians = this.props.ScoreBoard.politicians;
     return (
       <CardContainer>
         <Helmet
@@ -28,6 +30,7 @@ export class ScoreBoard extends React.Component { // eslint-disable-line react/p
         <ProfilePictureIcon />
         <FormattedMessage {...messages.header} />
         <ProgressBar percent={23} updateProgress={this.updateProgress} />
+        {politicians[0].name}
       </CardContainer>
     );
   }
@@ -35,6 +38,10 @@ export class ScoreBoard extends React.Component { // eslint-disable-line react/p
 
 ScoreBoard.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  ScoreBoard: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.bool,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
