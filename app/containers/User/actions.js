@@ -27,7 +27,6 @@ export function changePassword(password) {
 }
 
 export function signUpSuccess(token) {
-  console.log('sign up success called with', token);
   return {
     type: SIGN_UP_SUCCESS,
     token,

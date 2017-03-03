@@ -12,13 +12,13 @@ import { createStructuredSelector } from 'reselect';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { signUp, changePassword, changeUsername } from './actions';
-import makeSelectUser from './selectors';
+import { makeSelectUser } from './selectors';
 import messages from './messages';
 
 export class User extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    const { username, password } = this.props.User;
+    const { username, password, error } = this.props.User;
     return (
       <div>
         <Helmet
@@ -32,7 +32,6 @@ export class User extends React.Component { // eslint-disable-line react/prefer-
           <TextField
             hintText="awesome@email.com"
             floatingLabelText="Email"
-            type="email"
             value={username}
             onChange={this.props.onChangeUsername}
           />
@@ -51,6 +50,9 @@ export class User extends React.Component { // eslint-disable-line react/prefer-
             primary
             onClick={this.props.onSignUp}
           />
+          <br />
+          <br />
+          {!error ? '' : `Error >  ${error}`}
         </form>
       </div>
     );
@@ -61,6 +63,10 @@ User.propTypes = {
   onSignUp: React.PropTypes.func,
   onChangeUsername: React.PropTypes.func,
   onChangePassword: React.PropTypes.func,
+  error: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.bool,
+  ]),
   User: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,
