@@ -18,8 +18,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 notifications:
-  email:
-    on_failure: change
+  slack: polidevelopers:b2ilF8FkLWBCps2rGq0gOqjr
 
 after_success: 'npm run coveralls'
 
