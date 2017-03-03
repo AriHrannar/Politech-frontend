@@ -9,7 +9,7 @@ function reducerExists(comp) {
   try {
     fs.accessSync(path.join(__dirname, `../../../app/containers/${comp}/reducer.js`), fs.F_OK);
     return true;
-  } catch (e) {
+  } catch (error) {
     return false;
   }
 }
@@ -18,7 +18,7 @@ function sagasExists(comp) {
   try {
     fs.accessSync(path.join(__dirname, `../../../app/containers/${comp}/sagas.js`), fs.F_OK);
     return true;
-  } catch (e) {
+  } catch (error) {
     return false;
   }
 }

@@ -108,7 +108,8 @@ describe('asyncInjectors', () => {
         }
 
         try {
-          injectReducer(999, reducer);
+          const invariantViolation = 999;
+          injectReducer(invariantViolation, reducer);
         } catch (err) {
           result = err.name === 'Invariant Violation';
         }
@@ -128,7 +129,8 @@ describe('asyncInjectors', () => {
         }
 
         try {
-          injectReducer('coolio', 12345);
+          const coolio = 12345;
+          injectReducer('coolio', coolio);
         } catch (err) {
           result = err.name === 'Invariant Violation';
         }

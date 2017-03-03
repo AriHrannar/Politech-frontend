@@ -20,7 +20,7 @@ module.exports = (plop) => {
     try {
       fs.accessSync(path.join(__dirname, `../../app/containers/${comp}`), fs.F_OK);
       return `containers/${comp}`;
-    } catch (e) {
+    } catch (error) {
       return `components/${comp}`;
     }
   });

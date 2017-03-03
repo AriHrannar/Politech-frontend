@@ -8,7 +8,7 @@ function languageIsSupported(language) {
   try {
     fs.accessSync(`app/translations/${language}.json`, fs.F_OK);
     return true;
-  } catch (e) {
+  } catch (error) {
     return false;
   }
 }
@@ -21,7 +21,8 @@ module.exports = {
     message: 'What is the language you want to add i18n support for (e.g. "fr", "de")?',
     default: 'fr',
     validate: (value) => {
-      if ((/.+/).test(value) && value.length === 2) {
+      const two = 2;
+      if ((/.+/).test(value) && value.length === two) {
         return languageIsSupported(value) ? `The language "${value}" is already supported.` : true;
       }
 

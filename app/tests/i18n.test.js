@@ -15,9 +15,9 @@ const esTranslationMessages = {
 
 describe('formatTranslationMessages', () => {
   it('should build only defaults when DEFAULT_LOCALE', () => {
-    const result = formatTranslationMessages(DEFAULT_LOCALE, { a: 'a' });
+    const result = formatTranslationMessages(DEFAULT_LOCALE, { aaa: 'a' });
 
-    expect(result).toEqual({ a: 'a' });
+    expect(result).toEqual({ aaa: 'a' });
   });
 
 
