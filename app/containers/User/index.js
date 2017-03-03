@@ -18,7 +18,7 @@ import messages from './messages';
 export class User extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    const { username, password, error } = this.props.User;
+    const { username, password, error, token } = this.props.User;
     return (
       <div>
         <Helmet
@@ -53,6 +53,7 @@ export class User extends React.Component { // eslint-disable-line react/prefer-
           <br />
           <br />
           {!error ? '' : `Error >  ${error}`}
+          {!token ? '' : `Token key >  ${token.key}`}
         </form>
       </div>
     );
