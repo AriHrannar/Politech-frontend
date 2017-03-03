@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import scoreBoardReducer from 'containers/ScoreBoard/reducer';
+import userReducer from 'containers/User/reducer';
 
 /*
  * routeReducer
@@ -46,6 +47,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     scoreBoard: scoreBoardReducer,
+    user: userReducer,
     ...asyncReducers,
   });
 }

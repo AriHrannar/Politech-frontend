@@ -14,6 +14,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import Navbar from 'components/Navbar';
+// Needed for onTouchTap - Remove when possible
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -32,16 +37,19 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
   render() {
     return (
-      <AppWrapper>
-        <Helmet
-          titleTemplate="%s - React.js Boilerplate"
-          defaultTitle="React.js Boilerplate"
-          meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
-          ]}
-        />
-        {React.Children.toArray(this.props.children)}
-      </AppWrapper>
+      <div>
+        <Navbar />
+        <AppWrapper>
+          <Helmet
+            titleTemplate="%s - React.js Boilerplate"
+            defaultTitle="React.js Boilerplate"
+            meta={[
+            { name: 'description', content: 'A React.js Boilerplate application' },
+            ]}
+          />
+          {React.Children.toArray(this.props.children)}
+        </AppWrapper>
+      </div>
     );
   }
 }
