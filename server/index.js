@@ -2,8 +2,8 @@
 
 const express = require('express');
 const logger = require('./logger');
-const two = 2;
-const argv = require('minimist')(process.argv.slice(two));
+const arguementsIndex = 2;
+const argv = require('minimist')(process.argv.slice(arguementsIndex));
 const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
@@ -24,8 +24,8 @@ const customHost = argv.host || process.env.HOST;
 // Let http.Server use its default IPv6/4 host
 const host = customHost || null;
 const prettyHost = customHost || 'localhost';
-const portThreeThousand = 3000;
-const port = argv.port || process.env.PORT || portThreeThousand;
+const defaultPort = 3000;
+const port = argv.port || process.env.PORT || defaultPort;
 
 // Start your app.
 app.listen(port, host, (err) => {

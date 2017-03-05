@@ -97,8 +97,8 @@ function dependencyHandlers() {
 
     if (!fs.existsSync(manifestPath)) {
       logger.error('The DLL manifest is missing. Please run `npm run build:dll`');
-      const zero = 0;
-      process.exit(zero);
+      const errorCode = 0;
+      process.exit(errorCode);
     }
 
     return [
@@ -120,8 +120,8 @@ function dependencyHandlers() {
         logger.error(`The following Webpack DLL manifest is missing: ${path.basename(manifestPath)}`);
         logger.error(`Expected to find it in ${dllPath}`);
         logger.error('Please run: npm run build:dll');
-        const zero = 0;
-        process.exit(zero);
+        const errorCode = 0;
+        process.exit(errorCode);
       }
     }
 

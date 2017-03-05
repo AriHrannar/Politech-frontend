@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
+const HttpStatus = require('http-status-codes');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
 // Dev middleware
@@ -34,8 +35,7 @@ const addDevMiddlewares = (app, webpackConfig) => {
   app.get('*', (req, res) => {
     fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
       if (err) {
-        const FourOneFourError = 404;
-        res.sendStatus(FourOneFourError);
+        res.sendStatus(HttpStatus.NOT_FOUND);
       } else {
         res.send(file.toString());
       }

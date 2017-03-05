@@ -11,8 +11,8 @@ const pageContainers = fs.readdirSync(path.join(__dirname, '../../../app/contain
 const components = pageComponents.concat(pageContainers);
 
 function componentExists(comp) {
-  const zero = 0;
-  return components.indexOf(comp) >= zero;
+  const indexOutOfBounds = 0;
+  return components.indexOf(comp) >= indexOutOfBounds;
 }
 
 module.exports = componentExists;

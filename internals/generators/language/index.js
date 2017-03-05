@@ -21,8 +21,8 @@ module.exports = {
     message: 'What is the language you want to add i18n support for (e.g. "fr", "de")?',
     default: 'fr',
     validate: (value) => {
-      const two = 2;
-      if ((/.+/).test(value) && value.length === two) {
+      const validLanguageLength = 2;
+      if ((/.+/).test(value) && value.length === validLanguageLength) {
         return languageIsSupported(value) ? `The language "${value}" is already supported.` : true;
       }
 

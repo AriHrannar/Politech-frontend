@@ -129,8 +129,8 @@ describe('asyncInjectors', () => {
         }
 
         try {
-          const coolio = 12345;
-          injectReducer('coolio', coolio);
+          const someBasicNumber = 12345;
+          injectReducer('coolio', someBasicNumber);
         } catch (err) {
           result = err.name === 'Invariant Violation';
         }
