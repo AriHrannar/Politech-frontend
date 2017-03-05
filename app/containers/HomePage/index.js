@@ -11,13 +11,12 @@
 
 import React from 'react';
 import CenteredSection from '../../components/CenteredSection';
-import ScoreBoard from '../ScoreBoard';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <CenteredSection>
-        <ScoreBoard />
+        <p>HomePage</p>
       </CenteredSection>
     );
   }
