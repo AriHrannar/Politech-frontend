@@ -36,7 +36,7 @@ module.exports = {
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
-    let componentTemplate;
+    let componentTemplate = './component/es6.js.hbs';
 
     switch (data.type) {
       case 'ES6 Class': {

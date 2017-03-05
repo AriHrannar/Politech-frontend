@@ -70,7 +70,9 @@ module.exports = require('./webpack.base.babel')({
  */
 function dependencyHandlers() {
   // Don't do anything during the DLL Build step
-  if (process.env.BUILDING_DLL) { return []; }
+  if (process.env.BUILDING_DLL) {
+    return [];
+  }
 
   // If the package.json does not have a dllPlugin property, use the CommonsChunkPlugin
   if (!dllPlugin) {
@@ -95,7 +97,8 @@ function dependencyHandlers() {
 
     if (!fs.existsSync(manifestPath)) {
       logger.error('The DLL manifest is missing. Please run `npm run build:dll`');
-      process.exit(0);
+      const errorCode = 0;
+      process.exit(errorCode);
     }
 
     return [
@@ -107,7 +110,9 @@ function dependencyHandlers() {
   }
 
   // If DLLs are explicitly defined, we automatically create a DLLReferencePlugin for each of them.
-  const dllManifests = Object.keys(dllPlugin.dlls).map((name) => path.join(dllPath, `/${name}.json`));
+  const dllManifests = Object.keys(dllPlugin.dlls).map((name) => {
+    path.join(dllPath, `/${name}.json`);
+  });
 
   return dllManifests.map((manifestPath) => {
     if (!fs.existsSync(path)) {
@@ -115,8 +120,8 @@ function dependencyHandlers() {
         logger.error(`The following Webpack DLL manifest is missing: ${path.basename(manifestPath)}`);
         logger.error(`Expected to find it in ${dllPath}`);
         logger.error('Please run: npm run build:dll');
-
-        process.exit(0);
+        const errorCode = 0;
+        process.exit(errorCode);
       }
     }
 
@@ -136,13 +141,17 @@ function templateContent() {
     path.resolve(process.cwd(), 'app/index.html')
   ).toString();
 
-  if (!dllPlugin) { return html; }
+  if (!dllPlugin) {
+    return html;
+  }
 
   const doc = cheerio(html);
   const body = doc.find('body');
-  const dllNames = !dllPlugin.dlls ? ['reactBoilerplateDeps'] : Object.keys(dllPlugin.dlls);
+  const dllNames = dllPlugin.dlls ? Object.keys(dllPlugin.dlls) : ['reactBoilerplateDeps'];
 
-  dllNames.forEach((dllName) => body.append(`<script data-dll='true' src='/${dllName}.dll.js'></script>`));
+  dllNames.forEach((dllName) => {
+    body.append(`<script data-dll='true' src='/${dllName}.dll.js'></script>`);
+  });
 
   return doc.toString();
 }

@@ -93,7 +93,9 @@ if (module.hot) {
 }
 
 // Chunked polyfill for browsers without Intl support
-if (!window.Intl) {
+if (window.Intl) {
+  render(translationMessages);
+} else {
   (new Promise((resolve) => {
     resolve(import('intl'));
   }))
@@ -104,8 +106,6 @@ if (!window.Intl) {
     .catch((err) => {
       throw err;
     });
-} else {
-  render(translationMessages);
 }
 
 // Install ServiceWorker and AppCache in the end since
